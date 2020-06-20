@@ -11,6 +11,10 @@
         var socket = io(); //load socket.io-client and connect to the host that serves the page
         window.addEventListener("load", function(){ //when page loads
           var arroserButton = document.getElementById("Arroser");
+          if (arroserButton.clicked == true)
+          {
+              alert("button was clicked");
+          }
           //Détecter le click du bouton
         });
         /*

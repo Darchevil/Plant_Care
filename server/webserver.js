@@ -1,10 +1,11 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var fs = require('fs'); //require filesystem module
+var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 
 http.listen(8080); //listen to port 8080
 
 function handler (req, res) { //create server
-  fs.readFile(__dirname + 'index.html', function(err, data) { //read file index.html in public folder
+  fs.readFile(__dirname + 'index.html', function(err, data) { //read file index.html 
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
       return res.end("404 Not Found");
@@ -14,3 +15,12 @@ function handler (req, res) { //create server
     return res.end();
   });
 }
+io.sockets.on('connection', function (socket) {// WebSocket Connection
+  var isArrosed = new Boolean(false); //static variable for current status
+  socket.on('arrosed', function(data) {
+    arrosedPlant = data;
+    if (arrosedPlant == true) {
+      console.log(arrosedPlant);
+    }
+  });
+});
