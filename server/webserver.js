@@ -23,12 +23,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   socket.on('event', function(data) { //Ici socket.on permet au serveur de recevoir des données sur un canal 'event'
     console.log(data); //affichage des données reçues du client
   })
-  /*
-  socket.on('arrosed', function(data) {
-    arrosedPlant = data;
-    if (arrosedPlant == true) {
-      console.log(arrosedPlant);
+  
+  socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
+    isArrosed = data; //Il recçoit la donnée data depuis le client
+    if (isArrosed == true) { //Si le bouton a été cliqué,
+      console.log("Plante arrosée"); // affichage résultat
     }
   });
-  */
+  
 });
