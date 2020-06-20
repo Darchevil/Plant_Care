@@ -18,10 +18,10 @@ function handler (req, res) { //create server
 io.sockets.on('connection', function (socket) {// WebSocket Connection
   var isArrosed = new Boolean(false); //static variable for current status
 
-  socket.emit('news', {hello:'world'});
+  socket.emit('news', {hello:'world'}); // Avec emit, le serveur ENVOIE des données sur ce "canal d'événement" appelé 'news'
 
-  socket.on('event', function(data) {
-    console.log(data);
+  socket.on('event', function(data) { //Ici socket.on permet au serveur de recevoir des données sur un canal 'event'
+    console.log(data); //affichage des données reçues du client
   })
   /*
   socket.on('arrosed', function(data) {
