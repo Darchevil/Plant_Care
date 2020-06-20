@@ -25,7 +25,6 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   })
   
   socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
-    console.log(data);
     isArrosed = data; //Il recçoit la donnée data depuis le client
     if (isArrosed == true) { //Si le bouton a été cliqué,
       console.log("Plante arrosée"); // affichage résultat
