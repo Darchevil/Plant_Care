@@ -3,7 +3,7 @@
 <body>
     <h1> Plant Care Server </h1>
     <h1>Control LED light</h1>
-    <button id="Arroser" onClick = "" type="button">Arroser plante</button>
+    <button id="arroser" onClick = "clicked" type="button">Arroser plante</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
@@ -14,15 +14,14 @@
         })
         socket.emit('event', {my: 'data'}); //On envoie les données au serveur sur le canal 'event'
         window.addEventListener("load", function(){ //when page loads
-          var arroserButton = document.getElementById("Arroser");
-          if (arroserButton.clicked == true)
-          {
-              console.log("button was clicked");
-              socket.emit('buttonAlert', {clicked: 'true'});
-              
-          }
-          //Détecter le click du bouton
+          var arroserButton = document.getElementById("arroser");
         });
+
+        function clicked()
+        {
+            console.log("button was clicked");
+            socket.emit('buttonAlert', {clicked: 'true'});
+        }
         /*
         socket.on('light', function (data) { //get button status from client
           document.getElementById("light").checked = data; //change checkbox according to push button on Raspberry Pi
