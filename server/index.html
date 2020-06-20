@@ -18,7 +18,7 @@
           if (arroserButton.clicked == true)
           {
               console.log("button was clicked");
-              socket.emit('buttonAlert', true);
+              socket.emit('buttonAlert', {clicked: 'true'});
               
           }
           //Détecter le click du bouton
