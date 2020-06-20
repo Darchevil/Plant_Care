@@ -16,7 +16,7 @@ function handler (req, res) { //create server
   });
 }
 io.sockets.on('connection', function (socket) {// WebSocket Connection
-  var isArrosed = new Boolean(false); //static variable for current status
+  var isArrosed; //static variable for current status
 
   socket.emit('news', {hello:'world'}); // Avec emit, le serveur ENVOIE des données sur ce "canal d'événement" appelé 'news'
 
@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     console.log(data); //affichage de la donnée
     //console.log("Plante arrosée ? " + data.clicked); //On va chercher la donnée située dans le champ JSON "clicked"
     isArrosed = data.clicked; //Il recçoit la donnée data depuis le client
-    if (isArrosed == true) { //Si le bouton a été cliqué,
+    if (isArrosed == "true") { //Si le bouton a été cliqué,
       console.log("Plante arrosée"); // affichage résultat
     }
   });
