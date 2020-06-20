@@ -5,5 +5,19 @@
     <h1>Control LED light</h1>
     <button id="Arroser" onClick = "" type="button">Arroser plante</button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+    <script>
+        var socket = io(); //load socket.io-client and connect to the host that serves the page
+        window.addEventListener("load", function(){ //when page loads
+          var arroserButton = document.getElementById("Arroser");
+          //Détecter le click du bouton
+        });
+        /*
+        socket.on('light', function (data) { //get button status from client
+          document.getElementById("light").checked = data; //change checkbox according to push button on Raspberry Pi
+          socket.emit("light", data); //send push button status to back to server
+        });*/
+        </script>
 </body>
 </html>
