@@ -17,10 +17,18 @@ function handler (req, res) { //create server
 }
 io.sockets.on('connection', function (socket) {// WebSocket Connection
   var isArrosed = new Boolean(false); //static variable for current status
+
+  socket.emit('news', {hello:'world'});
+
+  socket.on('event', function(data) {
+    console.log(data);
+  })
+  /*
   socket.on('arrosed', function(data) {
     arrosedPlant = data;
     if (arrosedPlant == true) {
       console.log(arrosedPlant);
     }
   });
+  */
 });
