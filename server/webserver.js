@@ -24,7 +24,16 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     console.log(data); //affichage des données reçues du client
   })
   
-  socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
+socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
+    console.log(data);
+    console.log("Plante arrosée ? " + data.clicked);
+    isArrosed = data; //Il recçoit la donnée data depuis le client
+    if (isArrosed == true) { //Si le bouton a été cliqué,
+      console.log("Plante arrosée"); // affichage résultat
+    }
+  });
+
+ socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
     console.log(data);
     var state = JSON.stringify(data);
     console.log("state : " + state);
