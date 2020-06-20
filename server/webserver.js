@@ -21,23 +21,14 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   socket.emit('news', {hello:'world'}); // Avec emit, le serveur ENVOIE des données sur ce "canal d'événement" appelé 'news'
 
   socket.on('event', function(data) { //Ici socket.on permet au serveur de recevoir des données sur un canal 'event'
-    console.log(data); //affichage des données reçues du client
+    console.log(data.welcome); //affichage des données reçues du client
+
   })
   
-socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
-    console.log(data);
-    console.log("Plante arrosée ? " + data.clicked);
-    isArrosed = data; //Il recçoit la donnée data depuis le client
-    if (isArrosed == true) { //Si le bouton a été cliqué,
-      console.log("Plante arrosée"); // affichage résultat
-    }
-  });
-
- socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
-    console.log(data);
-    var state = JSON.stringify(data);
-    console.log("state : " + state);
-    isArrosed = data; //Il recçoit la donnée data depuis le client
+  socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
+    console.log(data); //affichage de la donnée
+    //console.log("Plante arrosée ? " + data.clicked); //On va chercher la donnée située dans le champ JSON "clicked"
+    isArrosed = data.clicked; //Il recçoit la donnée data depuis le client
     if (isArrosed == true) { //Si le bouton a été cliqué,
       console.log("Plante arrosée"); // affichage résultat
     }

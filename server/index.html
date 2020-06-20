@@ -12,7 +12,7 @@
         socket.on('news', function(data){ //On reçoit les données du serveur sur le canal 'news'
             console.log(data); //On affiche les données reçues du serveur.
         })
-        socket.emit('event', {my: 'data'}); //On envoie les données au serveur sur le canal 'event'
+        socket.emit('event', {welcome: 'hello server from client'}); //On envoie les données au serveur sur le canal 'event'
         window.addEventListener("load", function(){ //when page loads
           var arroserButton = document.getElementById("arroser");
         });
