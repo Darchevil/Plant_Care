@@ -1,6 +1,8 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
+var shell = require('shelljs'); //Permet d'envoyer des commandes shell
+var plugAdress = "e0:e5:cf:1e:9b:05"; //Adresse de la prise.
 
 http.listen(8080); //listen to port 8080
 console.log("listening to port 8080");
@@ -30,7 +32,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     //console.log("Plante arrosée ? " + data.clicked); //On va chercher la donnée située dans le champ JSON "clicked"
     isArrosed = data.clicked; //Il recçoit la donnée data depuis le client
     if (isArrosed == "true") { //Si le bouton a été cliqué,
+      shell.exec('sudo smartplugctl ' + plugAdress + ' on');
+      setInterval(function(){ 
+        console.log("Arrosage en cours");
+      }, 2000);//run this thang every 2 seconds
       console.log("Plante arrosée"); // affichage résultat
+      shell.exec('sudo smartplugctl ' + plugAdress + ' off');
     }
   });
   
