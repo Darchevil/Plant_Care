@@ -33,10 +33,10 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     isArrosed = data.clicked; //Il recçoit la donnée data depuis le client
     if (isArrosed == "true") { //Si le bouton a été cliqué,
       shell.exec('sudo smartplugctl ' + plugAdress + ' on');
-      setInterval(function(){ 
-        console.log("Arrosage en cours");
-      }, 2000);//run this thang every 2 seconds
-      console.log("Plante arrosée"); // affichage résultat
+      setTimeout(function(){
+        console.log("Plante arrosée ! "); 
+     }, 2000);//wait 2 seconds
+      console.log("Arrosage en cours"); // affichage action
       shell.exec('sudo smartplugctl ' + plugAdress + ' off');
     }
   });
