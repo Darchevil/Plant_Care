@@ -16,3 +16,13 @@ The software is designed to know what kind of plant is your plant and then it wi
 ** for the database ** : Firebase ²
 
 ** Conteneurization ** : Kubernetes & Docker 
+
+## To control your smartplug
+Please refer to this link to install the smartplug AWOX. This will be used to give power to the motor to give water to the plant.
+
+Link to install[https://github.com/sourceperl/smartplugctl]
+
+## How to send shell commands from javascript code
+USE **shelljs** 
+
+link here for all commands [https://github.com/shelljs/shelljs]
