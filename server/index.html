@@ -3,15 +3,21 @@
 <body>
     <h1> Plant Care Server </h1>
     <h2> Cliquez sur ce bouton pour arroser la plante</h2>
+    <div style="width:200px;height:100px;border:1px solid #000;"> 
+      <p id = "valueHumidity"> </p>
+    </div>
     <button id="arroser" onClick = "clicked();" type="button">Arroser plante</button>
-    <div style="width:500px;height:100px;border:1px solid #000;">This is a rectangle!</div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
     <script>
         var socket = io(); //load socket.io-client and connect to the host that serves the page
         socket.on('news', function(data){ //On reçoit les données du serveur sur le canal 'news'
             console.log(data); //On affiche les données reçues du serveur.
+        })
+        socket.on('newValue', function(data){
+          var newValue = data.value; //On récupère la valeur depuis le serveur
+          document.getElementById('valueHumidity').innerHTML = newValue;
         })
         socket.emit('event', {welcome: 'hello server from client'}); //On envoie les données au serveur sur le canal 'event'
         window.addEventListener("load", function(){ //when page loads
