@@ -4,6 +4,8 @@ var io = require('socket.io')(http) //require socket.io module and pass the http
 var shell = require('shelljs'); //Permet d'envoyer des commandes shell
 var plugAdress = "e0:e5:cf:1e:9b:05"; //Adresse de la prise.
 
+var stringHumidite = "0%";
+
 http.listen(8080); //listen to port 8080
 console.log("listening to port 8080");
 function handler (req, res) { //create server
@@ -26,6 +28,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     console.log(data.welcome); //affichage des données reçues du client
 
   })
+
+  setTimeout(function(){
+    socket.emit('newValue', {value:stringHumidite});
+ }, 2000);//wait 2 seconds
+
+
   
   socket.on('buttonAlert', function(data) { //Lorsque le serveur reçoit l'événement buttonAlert
     //console.log(data); //affichage de la donnée
