@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
 
   })
 
-  setTimeout(function(){
+  setInterval(function(){
     Humidite = Humidite + 1;
     var stringHumidite = Humidite.toString();
     socket.emit('newValue', {value:stringHumidite});
